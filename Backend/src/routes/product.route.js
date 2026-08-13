@@ -7,5 +7,7 @@ const productRoute = express.Router()
   productRoute.post('/add' ,authMiddleware , controllers.addProducts )
   productRoute.get('/get' ,authMiddleware , controllers.getProducts )
   productRoute.get('/single/:id' ,authMiddleware , controllers.getSingleProduct)
+  productRoute.patch('/update/:id' ,authMiddleware , controllers.updateProduct)
+  productRoute.delete('/delete/:id' ,authMiddleware , controllers.deleteProduct)
 
 module.exports = productRoute
