@@ -34,11 +34,16 @@ const userSchema = new mongoose.Schema(
       default: "",
     },
 
+
+////////////////////////////////
+
+
+
     profileImage: {
       type: String,
       default: "",
     },
-
+    
     farmName: {
       type: String,
       default: "",
@@ -97,12 +102,12 @@ const userSchema = new mongoose.Schema(
 
 
 userSchema.methods.generateAuthToken = function(){
-    const token = jwt.sign({
+    const accessToken = jwt.sign({
         id: this._id
     }, process.env.JWT_SECRET ,
   {expiresIn:"1d"})
 
-  return token
+  return accessToken
 }
 
 const User = mongoose.model("User", userSchema);
