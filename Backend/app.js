@@ -3,6 +3,7 @@ const connectDB = require ('./src/db/db')
 const cookiesParser = require('cookie-parser')
 const route = require('./src/routes/auth.route')
 const productRoute = require('./src/routes/product.route')
+const orderRoute = require('./src/routes/order.route')
 
 require('dotenv').config()
 
@@ -16,7 +17,7 @@ app.use(express.static("public"))
 
 app.use("/api/auth" , route)
 app.use("/api/product" , productRoute) 
-
+app.use("/api/order" , orderRoute)
 
 
 app.get("/" , (req , res) =>{

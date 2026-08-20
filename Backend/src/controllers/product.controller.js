@@ -95,7 +95,8 @@ const getProducts = async (req, res) => {
 
 const getSingleProduct = async (req, res) => {
   try {
-    const id = req.params.id;
+    const id = req.params.id
+    const userId = req.user.id
 
     if (!id) {
       return res.status(404).json({
@@ -104,7 +105,10 @@ const getSingleProduct = async (req, res) => {
       });
     }
 
-    const singleProduct = await Product.findById(id);
+    const singleProduct = await Product.findById({
+      _id:id ,
+      farmer:userId
+    });
 
     if (!singleProduct) {
       return res.status(404).json({
